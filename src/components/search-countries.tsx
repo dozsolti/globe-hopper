@@ -1,74 +1,34 @@
-"use client"
+"use client";
 
-import { Fragment, useId, useState } from "react"
-import { CheckIcon, ChevronDownIcon } from "lucide-react"
+import { useId, useState } from "react";
+import { ChevronDownIcon } from "lucide-react";
 
-import { Button } from "@/components/ui/button"
+import { Button } from "@/components/ui/button";
 import {
   Command,
   CommandEmpty,
-  CommandGroup,
   CommandInput,
   CommandItem,
   CommandList,
-} from "@/components/ui/command"
-import { Label } from "@/components/ui/label"
+} from "@/components/ui/command";
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@/components/ui/popover"
+} from "@/components/ui/popover";
+import { cities } from "@/data/cities";
 
-const countries = [
-  {
-    continent: "America",
-    items: [
-      { value: "United States", flag: "🇺🇸" },
-      { value: "Canada", flag: "🇨🇦" },
-      { value: "Mexico", flag: "🇲🇽" },
-    ],
-  },
-  {
-    continent: "Africa",
-    items: [
-      { value: "South Africa", flag: "🇿🇦" },
-      { value: "Nigeria", flag: "🇳🇬" },
-      { value: "Morocco", flag: "🇲🇦" },
-    ],
-  },
-  {
-    continent: "Asia",
-    items: [
-      { value: "China", flag: "🇨🇳" },
-      { value: "Japan", flag: "🇯🇵" },
-      { value: "India", flag: "🇮🇳" },
-    ],
-  },
-  {
-    continent: "Europe",
-    items: [
-      { value: "United Kingdom", flag: "GB" },
-      { value: "France", flag: "🇫🇷" },
-      { value: "Germany", flag: "🇩🇪" },
-    ],
-  },
-  {
-    continent: "Oceania",
-    items: [
-      { value: "Australia", flag: "🇦🇺" },
-      { value: "New Zealand", flag: "🇳🇿" },
-    ],
-  },
-]
-
-export default function SearchCountries() {
-  const id = useId()
-  const [open, setOpen] = useState<boolean>(false)
-  const [value, setValue] = useState<string>("")
+export default function SearchCountries({
+  goToMap,
+}: {
+  goToMap: (coords: [number, number]) => void;
+}) {
+  const id = useId();
+  const [open, setOpen] = useState<boolean>(false);
+  const [value, setValue] = useState<string>("");
 
   return (
     <div className="*:not-first:mt-2">
-      {/* <Label htmlFor={id}>Search a country or city:</Label> */}
       <Popover open={open} onOpenChange={setOpen}>
         <PopoverTrigger asChild>
           <Button
@@ -80,19 +40,10 @@ export default function SearchCountries() {
           >
             {value ? (
               <span className="flex min-w-0 items-center gap-2">
-                <span className="text-lg leading-none">
-                  {
-                    countries
-                      .map((group) =>
-                        group.items.find((item) => item.value === value)
-                      )
-                      .filter(Boolean)[0]?.flag
-                  }
-                </span>
                 <span className="truncate">{value}</span>
               </span>
             ) : (
-              <span className="text-muted-foreground">Select country</span>
+              <span className="text-muted-foreground">Search for a city</span>
             )}
             <ChevronDownIcon
               size={16}
@@ -106,37 +57,29 @@ export default function SearchCountries() {
           align="start"
         >
           <Command>
-            <CommandInput placeholder="Search country..." />
+            <CommandInput placeholder="Search cities..." />
             <CommandList>
-              <CommandEmpty>No country found.</CommandEmpty>
-              {countries.map((group) => (
-                <Fragment key={group.continent}>
-                  <CommandGroup heading={group.continent}>
-                    {group.items.map((country) => (
-                      <CommandItem
-                        key={country.value}
-                        value={country.value}
-                        onSelect={(currentValue) => {
-                          setValue(currentValue)
-                          setOpen(false)
-                        }}
-                      >
-                        <span className="text-sm leading-none text-muted-foreground">
-                          {country.flag}
-                        </span>{" "}
-                        {country.value}
-                        {value === country.value && (
-                          <CheckIcon size={16} className="ml-auto" />
-                        )}
-                      </CommandItem>
-                    ))}
-                  </CommandGroup>
-                </Fragment>
+              <CommandEmpty>No city found.</CommandEmpty>
+              {cities.slice(0, 10).map((city) => (
+                <CommandItem
+                  key={city.i}
+                  value={city.n}
+                  onSelect={(currentValue) => {
+                    setValue(currentValue);
+                    setOpen(false);
+                    goToMap([city.c[0], city.c[1]]);
+                  }}
+                >
+                  <span className="text-xs leading-none text-muted-foreground">
+                    {city.p}
+                  </span>{" "}
+                  {city.n}
+                </CommandItem>
               ))}
             </CommandList>
           </Command>
         </PopoverContent>
       </Popover>
     </div>
-  )
+  );
 }

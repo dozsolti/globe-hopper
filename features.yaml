@@ -1,0 +1,69 @@
+name: "Globe Hopper"
+description: "An web app that allows users to save the locations they have visited."
+abstract: "CRUD on locations with a map with import/export from local storage."
+
+pages:
+  - landing:
+    - title: "Globe Hopper"
+    - description: "Explore the world with ease."
+    - layout:
+      - hero
+        - cta to /map
+      - features
+      - testimonials
+      - footer
+
+  - map:
+    - title: "Interactive Map"
+    - description: "Discover locations and plan your trips."
+    - layout:
+      - navbar:
+        - logo:
+          - todo: update
+        - search bar:
+          - todo: improve via virtualized list
+        - settings button
+      - sidebar:
+        - features:
+          - summary of visited locations
+          - list of saved locations
+          - filter locations by name or date
+          
+      - map view:
+        - interactive map:
+          - todo: add coords to url
+        - location markers
+        - add location by clicking on the map
+
+  - settings:
+    - title: "User Settings"
+    - description: "Customize your experience."
+    - layout:
+      - navbar
+      - settings:
+        - Clear all data button
+        - Import data button
+        - Export data button
+
+      - footer
+
+  - about:
+    - title: "About Globe Hopper"
+    - description: "Learn more about our mission and team."
+    - layout:
+      - navbar
+      - team section
+      - mission statement
+      - footer
+
+features:
+  - responsive design
+  - map integration
+  - offline mode
+
+
+flows:
+  - user visits landing page then:
+    - user navigates to map page
+  - user adjusts settings
+  - user views about page

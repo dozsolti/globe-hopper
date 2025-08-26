@@ -1,44 +1,48 @@
-import { useId } from "react"
-import { SearchIcon } from "lucide-react"
+import Logo from "@/components/logo";
+import { Button } from "@/components/ui/button";
+import SearchCountries from "./search-countries";
+import { Link } from "react-router";
+import { SettingsIcon } from "lucide-react";
+import type { MapRef } from "react-leaflet/MapContainer";
 
-import Logo from "@/components/logo"
-import ThemeToggle from "@/components/theme-toggle"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import MapSearchBar from "./MapSearchBar"
-import SearchCountries from "./search-countries"
-
-export default function Navbar() {
-  const id = useId()
-
+export default function Navbar({
+  mapRef,
+}: {
+  mapRef: React.RefObject<MapRef>;
+}) {
   return (
-    <header className="border-b px-4 md:px-6">
-      <div className="flex h-16 items-center justify-between gap-4">
+    <header className="border-b px-4 md:px-6 h-[64px] ">
+      <div className="flex h-16 items-center justify-between gap-4 max-w-10/12 mx-auto">
         {/* Logo */}
         <div className="flex-1">
-          <a href="/map" className="text-primary hover:text-primary/90 flex gap-4">
+          <Link
+            to="/"
+            className="text-primary hover:text-primary/90 flex gap-4"
+          >
             <Logo />
             <span className="text-xl">Globe Hopper</span>
-          </a>
+          </Link>
         </div>
         {/* Middle area */}
         <div className="grow max-sm:hidden">
           {/* Search form */}
           <div className="relative mx-auto w-full max-w-xs">
-            <SearchCountries />
+            <SearchCountries
+              goToMap={(coords) =>
+                mapRef.current?.flyTo(coords, 10, { duration: 1 })
+              }
+            />
           </div>
         </div>
         {/* Right side */}
         <div className="flex flex-1 items-center justify-end gap-2">
-          <Button asChild variant="ghost" size="sm" className="text-sm">
-            <a href="#">Community</a>
+          <Button variant="ghost" size="sm" className="text-sm">
+            <SettingsIcon />
+            <Link to="/settings">Settings</Link>
           </Button>
-          <Button asChild size="sm" className="text-sm">
-            <a href="#">Get Started</a>
-          </Button>
-          <ThemeToggle />
+          {/* <ThemeToggle /> */}
         </div>
       </div>
     </header>
-  )
+  );
 }
