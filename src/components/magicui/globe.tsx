@@ -20,8 +20,9 @@ const GLOBE_CONFIG: COBEOptions = {
   mapSamples: 16000,
   mapBrightness: 2,
   baseColor: [1, 1, 1],
-  markerColor: [251 / 255, 100 / 255, 21 / 255],
+  markerColor: [166 / 255, 95 / 255, 0 / 255],
   glowColor: [1, 1, 1],
+  opacity: 0.7,
   markers: [
     { location: [14.5995, 120.9842], size: 0.03 },
     { location: [19.076, 72.8777], size: 0.1 },
@@ -104,12 +105,12 @@ export function Globe({
     <div
       className={cn(
         "inset-0 mx-auto aspect-[1/1] w-full max-w-[800px]",
-        className,
+        className
       )}
     >
       <canvas
         className={cn(
-          "size-full opacity-0 transition-opacity duration-500 [contain:layout_paint_size]",
+          "size-full opacity-0 transition-opacity duration-500 [contain:layout_paint_size]"
         )}
         ref={canvasRef}
         onPointerDown={(e) => {

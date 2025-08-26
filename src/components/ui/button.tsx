@@ -10,7 +10,7 @@ const buttonVariants = cva(
     variants: {
       variant: {
         default:
-          "bg-primary text-primary-foreground shadow-sm hover:bg-primary/90",
+          "bg-primary text-zinc-900 shadow-sm hover:bg-primary/90",
         destructive:
           "bg-destructive text-white shadow-xs hover:bg-destructive/90 focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40",
         outline:
@@ -55,4 +55,5 @@ function Button({
   )
 }
 
+// eslint-disable-next-line react-refresh/only-export-components
 export { Button, buttonVariants }

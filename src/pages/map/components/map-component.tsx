@@ -1,30 +1,23 @@
 import {
   MapContainer,
   TileLayer,
-  Marker,
   Popup,
   CircleMarker,
   useMapEvent,
 } from "react-leaflet";
 import { forwardRef } from "react";
 import type { MapRef } from "react-leaflet/MapContainer";
-import { useStore } from "@/hooks/store";
-import { useMapClicked } from "../hooks/useMapClicked";
+import { useStore } from "@/hooks/useStore";
+import { useMapClicked } from "../../../hooks/useMapClicked";
 
 function AddNewPlaceMarker() {
-  const { coords, setCoords, setDetails } = useMapClicked();
+  const { coords, setCoords, loadDetails } = useMapClicked();
 
   const map = useMapEvent("click", (e) => {
     // console.log("Map clicked at", e.latlng);
     setCoords([e.latlng.lat, e.latlng.lng]);
-    map.flyTo([e.latlng.lat, e.latlng.lng], map.getZoom(), { animate: true });
-
-    const url = `https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${e.latlng.lat}&lon=${e.latlng.lng}`;
-    fetch(url)
-      .then((res) => res.json())
-      .then((data) => {
-        setDetails(data);
-      });
+    map.setView([e.latlng.lat, e.latlng.lng]);
+    loadDetails();
   });
 
   if (coords) {
@@ -41,7 +34,7 @@ function AddNewPlaceMarker() {
   return null;
 }
 
-const Map = forwardRef(function Map(props, ref: React.Ref<MapRef>) {
+const MapComponent = forwardRef(function Map(_props, ref: React.Ref<MapRef>) {
   const { visitedList } = useStore();
 
   return (
@@ -67,14 +60,17 @@ const Map = forwardRef(function Map(props, ref: React.Ref<MapRef>) {
             key={place.id}
             center={[place.lat, place.lng]}
             radius={8}
-            color="orange"
-            fillColor="orange"
+            color={place.color}
+            fillColor={place.color}
             fillOpacity={0.5}
           >
             <Popup>
-              {place.name} - {place.country}
+              <b>{place.name}</b> - {place.country}
               <br />
-              Visited at {place.visitedAt}
+              <p>
+                Visited at {place.visitedStart} - {place.visitedEnd}
+              </p>
+              {place.note ? <p className="mt-2">{place.note}</p> : null}
             </Popup>
           </CircleMarker>
         ))}
@@ -83,4 +79,4 @@ const Map = forwardRef(function Map(props, ref: React.Ref<MapRef>) {
   );
 });
 
-export default Map;
+export default MapComponent;

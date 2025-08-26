@@ -119,3 +119,7 @@
   }
 }
 
+.leaflet-container img.leaflet-tile{
+  filter: brightness(1.6) contrast(1.1);
+}
+

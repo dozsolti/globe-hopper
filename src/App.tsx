@@ -1,7 +1,7 @@
 import { BrowserRouter, Route, Routes } from "react-router";
 import { ThemeProvider } from "./components/theme-provider";
 import HomePage from "./pages/home";
-import MapPage from "./pages/map";
+import MapPage from "./pages/map/map";
 
 function App() {
   return (

@@ -7,10 +7,10 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import type { Location } from "@/hooks/store";
+import type { Location } from "@/hooks/useStore";
 import { FixedSizeList } from "react-window";
 
-export default function MapSidebarHistory({
+export default function MapSidebarHistoryList({
   places,
   onPlaceClicked,
 }: {

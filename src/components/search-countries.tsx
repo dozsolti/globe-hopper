@@ -60,7 +60,7 @@ export default function SearchCountries({
             <CommandInput placeholder="Search cities..." />
             <CommandList>
               <CommandEmpty>No city found.</CommandEmpty>
-              {cities.slice(0, 10).map((city) => (
+              {cities.map((city) => (
                 <CommandItem
                   key={city.i}
                   value={city.n}

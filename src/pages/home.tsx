@@ -2,7 +2,7 @@ import { Globe } from "@/components/magicui/globe";
 import { TextAnimate } from "@/components/magicui/text-animate";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { MoveRight } from "lucide-react";
+import { MoveRightIcon } from "lucide-react";
 import { Link } from "react-router";
 
 export default function HomePage() {
@@ -44,11 +44,11 @@ export default function HomePage() {
                 <Button size="lg" className="gap-4" asChild>
                   {isFirstTime ? (
                     <Link to={"/map"}>
-                      Get Started <MoveRight className="w-4 h-4" />
+                      Get Started <MoveRightIcon className="w-4 h-4" />
                     </Link>
                   ) : (
                     <Link to={"/map"}>
-                      Continue <MoveRight className="w-4 h-4" />
+                      Continue <MoveRightIcon className="w-4 h-4" />
                     </Link>
                   )}
                 </Button>
