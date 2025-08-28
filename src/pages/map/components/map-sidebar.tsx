@@ -1,4 +1,4 @@
-import { SidebarIcon, XIcon } from "lucide-react";
+import { XIcon } from "lucide-react";
 import { useMapClicked } from "../../../hooks/useMapClicked";
 import type { LatLngArray } from "@/types";
 import MapSidebarStats from "./map-sidebar/map-sidebar-stats";
@@ -16,7 +16,7 @@ export default function MapSidebar({
     if (!details) {
       return (
         <div className="relative p-4">
-          <p className="text-center text-gray-500">Loading...</p>;
+          <p className="text-center text-gray-500">Loading...</p>
           <XIcon
             className="absolute top-5 right-5 ms-auto cursor-pointer"
             onClick={reset}
@@ -50,7 +50,7 @@ export default function MapSidebar({
 
   return (
     <div className="relative p-5">
-      <SidebarIcon className="absolute top-5 right-5" />
+      {/* <SidebarIcon className="absolute top-5 right-5" /> */}
 
       <MapSidebarStats />
 

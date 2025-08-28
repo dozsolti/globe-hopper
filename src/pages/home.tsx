@@ -2,11 +2,13 @@ import { Globe } from "@/components/magicui/globe";
 import { TextAnimate } from "@/components/magicui/text-animate";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { useStore } from "@/hooks/useStore";
 import { MoveRightIcon } from "lucide-react";
 import { Link } from "react-router";
 
 export default function HomePage() {
-  const isFirstTime = false;
+  const { visitedList } = useStore();
+  const isFirstTime = visitedList.length == 0;
   return (
     <>
       <div className="w-full">
@@ -22,12 +24,12 @@ export default function HomePage() {
               </TextAnimate>
             </span>
             <p className="text-lg md:text-xl leading-relaxed tracking-tight text-muted-foreground max-w-2xl text-center">
-              Easily save and visualize all the cities or states you've
-              ever visited on one beautiful, interactive map. Stop forgetting where
+              Easily save and visualize all the cities or states you've ever
+              visited on one beautiful, interactive map. Stop forgetting where
               you've been and start hopping.
             </p>
             <div className="flex flex-row gap-3 mt-8">
-                  <Button size="lg" className="gap-4" variant="outline">
+              <Button size="lg" className="gap-4" variant="outline">
                 See on Github{" "}
                 <svg
                   fill="white"
@@ -55,7 +57,7 @@ export default function HomePage() {
                 <p className="text-sm tracking-tight text-muted-foreground mt-2">
                   {isFirstTime
                     ? "Your adventures, your data."
-                    : "Congrats! 17 locations saved already."}
+                    : `Congrats! ${visitedList.length} locations saved already.`}
                 </p>
               </div>
             </div>

@@ -1,22 +1,17 @@
 "use client";
 
-import { useId, useState } from "react";
-import { ChevronDownIcon } from "lucide-react";
+import { useEffect, useId, useState } from "react";
+import { SearchIcon } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
-import {
-  Command,
-  CommandEmpty,
-  CommandInput,
-  CommandItem,
-  CommandList,
-} from "@/components/ui/command";
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
-import { cities } from "@/data/cities";
+import { defaultCities } from "@/data/cities";
+import { Input } from "./ui/input";
+import type { City } from "@/types";
 
 export default function SearchCountries({
   goToMap,
@@ -26,6 +21,10 @@ export default function SearchCountries({
   const id = useId();
   const [open, setOpen] = useState<boolean>(false);
   const [value, setValue] = useState<string>("");
+
+  const [allCities, setAllCities] = useState<City[]>(defaultCities);
+
+  const [searchTerm, setSearchTerm] = useState("");
 
   return (
     <div className="*:not-first:mt-2">
@@ -45,7 +44,7 @@ export default function SearchCountries({
             ) : (
               <span className="text-muted-foreground">Search for a city</span>
             )}
-            <ChevronDownIcon
+            <SearchIcon
               size={16}
               className="text-muted-foreground/80 shrink-0"
               aria-hidden="true"
@@ -53,33 +52,103 @@ export default function SearchCountries({
           </Button>
         </PopoverTrigger>
         <PopoverContent
-          className="border-input w-full min-w-[var(--radix-popper-anchor-width)] p-0  z-[99999]"
+          className="border-input w-full min-w-[var(--radix-popper-anchor-width)] p-0 z-[99999]"
           align="start"
         >
-          <Command>
-            <CommandInput placeholder="Search cities..." />
-            <CommandList>
-              <CommandEmpty>No city found.</CommandEmpty>
-              {cities.map((city) => (
-                <CommandItem
-                  key={city.i}
-                  value={city.n}
-                  onSelect={(currentValue) => {
-                    setValue(currentValue);
-                    setOpen(false);
-                    goToMap([city.c[0], city.c[1]]);
-                  }}
-                >
-                  <span className="text-xs leading-none text-muted-foreground">
-                    {city.p}
-                  </span>{" "}
-                  {city.n}
-                </CommandItem>
-              ))}
-            </CommandList>
-          </Command>
+          <Input
+            placeholder="Search cities..."
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+          />
+          <SearchResult
+            allCities={allCities}
+            setAllCities={setAllCities}
+            searchTerm={searchTerm.toLowerCase()}
+            onSelect={(city) => {
+              setValue(city.n);
+              setOpen(false);
+              goToMap([city.c[0], city.c[1]]);
+            }}
+          />
         </PopoverContent>
       </Popover>
+    </div>
+  );
+}
+
+const MIN_CHAR_SEARCH = 3;
+const CITIES_CACHE = new Map<string, City[]>();
+function SearchResult({
+  searchTerm,
+  onSelect,
+  allCities,
+  setAllCities,
+}: {
+  searchTerm: string;
+
+  allCities: City[];
+  setAllCities: (cities: City[]) => void;
+
+  onSelect: (city: City) => void;
+}) {
+  const cities = allCities.filter((x) =>
+    x.n.toLowerCase().startsWith(searchTerm)
+  );
+
+  useEffect(() => {
+    if (searchTerm.length == MIN_CHAR_SEARCH) {
+      if (CITIES_CACHE.has(searchTerm))
+        setAllCities(CITIES_CACHE.get(searchTerm) || []);
+      // TODO: cache this using useQuery +isLoading/isError
+      else
+        fetch("./cities/" + searchTerm + ".json")
+          .then((res) => res.json())
+          .then((data: City[]) => {
+            CITIES_CACHE.set(searchTerm, data);
+            setAllCities(data);
+          });
+    } else if (searchTerm.length < MIN_CHAR_SEARCH) {
+      setAllCities(defaultCities);
+    }
+  }, [searchTerm, setAllCities]);
+
+  return (
+    <div className="max-h-64 overflow-auto">
+      {cities.length == 0 ? (
+        searchTerm.length >= MIN_CHAR_SEARCH ? (
+          <div className="p-4 text-zinc-500">No city found.</div>
+        ) : null
+      ) : (
+        //TODO: replace with react-window
+        cities.map((city) => (
+          <div
+            key={city.i}
+            className="flex p-2 gap-4 border-b-2 items-center cursor-pointer hover:bg-accent"
+            onClick={() => {
+              onSelect(city);
+            }}
+          >
+            <span className="text-xs leading-none text-muted-foreground">
+              {city.p}
+            </span>
+            {city.n}
+          </div>
+        ))
+      )}
+
+      {searchTerm.length > 0 && searchTerm.length < MIN_CHAR_SEARCH ? (
+        <div className="p-4 text-zinc-500">
+          For more results keep typing{" "}
+          <span className="text-sm">
+            ({MIN_CHAR_SEARCH - searchTerm.length}{" "}
+            {MIN_CHAR_SEARCH - searchTerm.length == 1
+              ? "more"
+              : "more characters"}
+            )
+          </span>
+          ...
+        </div>
+      ) : null}
     </div>
   );
 }

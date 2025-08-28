@@ -1,13 +1,11 @@
 import {
   MapContainer,
   TileLayer,
-  Popup,
   CircleMarker,
   useMapEvent,
 } from "react-leaflet";
 import { forwardRef } from "react";
 import type { MapRef } from "react-leaflet/MapContainer";
-import { useStore } from "@/hooks/useStore";
 import { useMapClicked } from "../../../hooks/useMapClicked";
 
 function AddNewPlaceMarker() {
@@ -34,14 +32,15 @@ function AddNewPlaceMarker() {
   return null;
 }
 
-const MapComponent = forwardRef(function Map(_props, ref: React.Ref<MapRef>) {
-  const { visitedList } = useStore();
-
+const MapComponent = forwardRef(function Map(
+  props: { children: React.ReactNode[] },
+  ref: React.Ref<MapRef>
+) {
   return (
     <>
       <MapContainer
-        center={[40, 0]}
-        zoom={3}
+        center={[50, 0]}
+        zoom={4}
         style={{
           height: "100%",
           width: "100%",
@@ -55,25 +54,7 @@ const MapComponent = forwardRef(function Map(_props, ref: React.Ref<MapRef>) {
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png"
         />
-        {visitedList.map((place) => (
-          <CircleMarker
-            key={place.id}
-            center={[place.lat, place.lng]}
-            radius={8}
-            color={place.color}
-            fillColor={place.color}
-            fillOpacity={0.5}
-          >
-            <Popup>
-              <b>{place.name}</b> - {place.country}
-              <br />
-              <p>
-                Visited at {place.visitedStart} - {place.visitedEnd}
-              </p>
-              {place.note ? <p className="mt-2">{place.note}</p> : null}
-            </Popup>
-          </CircleMarker>
-        ))}
+        {props.children}
       </MapContainer>
     </>
   );

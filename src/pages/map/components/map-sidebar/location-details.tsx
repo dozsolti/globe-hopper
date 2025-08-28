@@ -28,13 +28,7 @@ export default function LocationDetails() {
     to: addDays(today, 3),
   });
 
-  const colors = [
-    "orange",
-    "blue",
-    "red",
-    "green",
-    "indigo",
-  ];
+  const colors = ["orange", "blue", "red", "green", "indigo"];
   const [color, setColor] = useState(colors[0]);
   const [note, setNote] = useState("");
 
@@ -97,12 +91,18 @@ export default function LocationDetails() {
         <legend className="text-foreground text-xl leading-none font-medium">
           Choose a color
         </legend>
-        <RadioGroup className="flex gap-1.5" defaultValue={color} onValueChange={setColor}>
+        <RadioGroup
+          className="flex gap-1.5"
+          defaultValue={color}
+          onValueChange={setColor}
+        >
           {colors.map((c) => (
             <RadioGroupItem
+              key={`new-location-color-${c}`}
               value={c}
               aria-label={c}
-              className={`size-6 border-${c}-500 bg-${c}-500 shadow-none data-[state=checked]:border-${c}-500 data-[state=checked]:bg-${c}-500`}
+              className={`size-6 bg-${c}-500 shadow-none`}
+              style={{ borderColor: c }}
             />
           ))}
         </RadioGroup>

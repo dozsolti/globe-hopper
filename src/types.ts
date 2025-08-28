@@ -1,5 +1,12 @@
 export type LatLngArray = [number, number];
 
+export interface City {
+  i: number;
+  n: string;
+  c: LatLngArray;
+  p: string;
+}
+
 export interface Place {
   id: number;
   name: string;

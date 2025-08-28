@@ -7,15 +7,15 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import type { Location } from "@/hooks/useStore";
 import { FixedSizeList } from "react-window";
+import type { Place } from "@/types";
 
 export default function MapSidebarHistoryList({
   places,
   onPlaceClicked,
 }: {
-  places: Location[];
-  onPlaceClicked?: (place: Location) => void;
+  places: Place[];
+  onPlaceClicked?: (place: Place) => void;
 }) {
   if (places.length == 0) {
     return <p className="text-center text-gray-500">No results.</p>;
@@ -38,7 +38,7 @@ export default function MapSidebarHistoryList({
             <CardHeader className="p-0">
               <CardTitle>{places[index].name}</CardTitle>
               <CardDescription>
-                Visited at {places[index].visitedAt}
+                {places[index].visitedStart} - {places[index].visitedEnd}
               </CardDescription>
               <CardAction>{places[index].country} </CardAction>
             </CardHeader>
