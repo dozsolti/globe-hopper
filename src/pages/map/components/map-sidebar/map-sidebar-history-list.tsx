@@ -18,12 +18,12 @@ export default function MapSidebarHistoryList({
   onPlaceClicked?: (place: Place) => void;
 }) {
   if (places.length == 0) {
-    return <p className="text-center text-gray-500">No results.</p>;
+    return <p className="text-gray-500 text-center">No results.</p>;
   }
 
   return (
     <FixedSizeList
-      height={800}
+      height={Math.min(places.length, 8)*120}
       width={"100%"}
       itemSize={120}
       itemCount={places.length}

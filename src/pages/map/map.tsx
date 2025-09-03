@@ -55,27 +55,25 @@ export default function MapPage() {
   return (
     <div className="min-h-screen">
       <Navbar>
-        <div className="grow max-sm:hidden relative mx-auto w-full max-w-xs">
-          <SearchCountries
-            goToMap={(coords) => {
-              goToCoords(coords);
-              setCoords(coords);
-              loadDetails();
-            }}
-          />
-        </div>
+        <SearchCountries
+          goToMap={(coords) => {
+            goToCoords(coords);
+            setCoords(coords);
+            loadDetails();
+          }}
+        />
       </Navbar>
-      <div className="flex h-[calc(100vh-64px)] relative">
+      <div className="relative flex max-md:flex-col-reverse h-[calc(100vh-64px)] overflow-auto">
         {visitedList.length > 0 || details ? (
-          <div className="left-0 min-w-2/6 md:min-w-1/6 max-h-svh overflow-y-auto overflow-x-hidden">
+          <div className="left-0 min-w-full min-lg:min-w-1/3 min-md:min-w-2/5 min-xl:min-w-1/5 min-h-fit min-md:max-h-svh overflow-hidden overflow-x-hidden min-md:overflow-y-auto">
             <MapSidebar goToCoords={goToCoords} />
           </div>
         ) : (
-          <div className="absolute italic my-4 top-0 left-0 right-0 mx-auto w-1/6 z-[9999] bg-background text-zinc-200 p-4 rounded border-2 border-zinc-500">
+          <div className="top-0 right-0 left-0 z-[9999] absolute bg-background mx-auto my-4 p-4 border-2 border-zinc-500 rounded w-8/12 min-md:w-1/6 text-zinc-200 italic">
             Click on the last place you visited.
           </div>
         )}
-        <div className="relative flex-1 h-full">
+        <div className="relative flex-1 min-md:h-full min-h-3/6">
           <MapComponent ref={mapRef}>
             {visitedList.map((place, i) => (
               <PlaceMarker

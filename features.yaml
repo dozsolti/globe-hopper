@@ -10,7 +10,7 @@ pages:
       - hero
         - cta to /map
       - features
-      - testimonials
+      - teams
       - footer
 
   - map:
@@ -18,20 +18,16 @@ pages:
     - description: "Discover locations and plan your trips."
     - layout:
       - navbar:
-        - logo:
-          - todo: update
-        - search bar:
-          - todo: improve via virtualized list
-        - settings button
+        - logo
+        - search bar
       - sidebar:
         - features:
           - summary of visited locations
           - list of saved locations
-          - filter locations by name or date
+          - filter locations by name
           
       - map view:
-        - interactive map:
-          - todo: add coords to url
+        - interactive map
         - location markers
         - add location by clicking on the map
 
@@ -42,10 +38,7 @@ pages:
       - navbar
       - settings:
         - Clear all data button
-        - Import data button
         - Export data button
-
-      - footer
 
   - about:
     - title: "About Globe Hopper"
@@ -60,10 +53,3 @@ features:
   - responsive design
   - map integration
   - offline mode
-
-
-flows:
-  - user visits landing page then:
-    - user navigates to map page
-  - user adjusts settings
-  - user views about page
