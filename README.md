@@ -1,6 +1,7 @@
-<h1 align="center" id="title">Globe Hopper</h1>
 
-<p align="center"><img src="https://socialify.git.ci/dozsolti/globe-hopper/image?custom_description=Keep+track+of+your+travels.&amp;custom_language=React&amp;description=1&amp;forks=1&amp;issues=1&amp;language=1&amp;name=1&amp;owner=1&amp;pattern=Plus&amp;pulls=1&amp;stargazers=1&amp;theme=Dark" alt="project-image"></p>
+<p align="center"><img src="https://github.com/dozsolti/globe-hopper/blob/main/public/screenshots/cover.png?raw=true" alt="Globe hopper cover image" height="300px"></p>
+
+<h1 align="center" id="title">Globe Hopper</h1>
 
 <h2>🚀 Demo</h2>
 
@@ -9,12 +10,12 @@
 <h2>Project Screenshots:</h2>
 
 <p align="center">
-  <img src="https://github.com/dozsolti/globe-hopper/blob/main/public/screenshots/save.png?raw=true" alt="project-screenshot" width="31%" height="300px" style="object-fit:cover">
-  <img src="https://github.com/dozsolti/globe-hopper/blob/main/public/screenshots/Screenshot%202025-08-29%20111010.png?raw=true" alt="project-screenshot" width="31%" height="300px" style="object-fit:cover">
-  <img src="https://github.com/dozsolti/globe-hopper/blob/main/public/screenshots/fullsearch.png?raw=true" alt="project-screenshot" width="31%" height="300px" style="object-fit:cover">
+  <img src="https://github.com/dozsolti/globe-hopper/blob/main/public/screenshots/save.png?raw=true" alt="Screenshot 1" width="31%" height="300px" style="object-fit:cover">
+  <img src="https://github.com/dozsolti/globe-hopper/blob/main/public/screenshots/history.png?raw=true" alt="Screenshot 2" width="31%" height="300px" style="object-fit:cover">
+  <img src="https://github.com/dozsolti/globe-hopper/blob/main/public/screenshots/fullsearch.png?raw=true" alt="Screenshot 3" width="31%" height="300px" style="object-fit:cover">
 </p>
 
-<h2>🧐 Features</h2>
+## :sparkles: Features
 
 Here're some of the project's best features:
 

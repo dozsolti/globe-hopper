@@ -3,6 +3,7 @@ import { ThemeProvider } from "./components/theme-provider";
 import HomePage from "./pages/home/home";
 import MapPage from "./pages/map/map";
 import SettingsPage from "./pages/settings";
+import Error404Page from "./pages/error404";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
             <Route path="/" element={<HomePage />} />
             <Route path="/map" element={<MapPage />} />
             <Route path="/settings" element={<SettingsPage />} />
+            <Route path="/*" element={<Error404Page />} />
           </Routes>
         </BrowserRouter>
       </ThemeProvider>
