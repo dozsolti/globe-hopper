@@ -1,8 +1,12 @@
 {
   "name": "globe-hopper",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
   "type": "module",
+  "author": {
+    "name": "Zsolt Domotor"
+  },
+  "description": "An app to help keep track of your travels.",
   "scripts": {
     "dev": "vite --host",
     "build": "tsc -b && vite build",

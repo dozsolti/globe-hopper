@@ -1,69 +1,44 @@
-# React + TypeScript + Vite
+<h1 align="center" id="title">Globe Hopper</h1>
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+<p align="center"><img src="https://socialify.git.ci/dozsolti/globe-hopper/image?custom_description=Keep+track+of+your+travels.&amp;custom_language=React&amp;description=1&amp;forks=1&amp;issues=1&amp;language=1&amp;name=1&amp;owner=1&amp;pattern=Plus&amp;pulls=1&amp;stargazers=1&amp;theme=Dark" alt="project-image"></p>
 
-Currently, two official plugins are available:
+<h2>🚀 Demo</h2>
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+[http://dozsolti.github.io/globe-hopper/](http://dozsolti.github.io/globe-hopper/)
 
-## Expanding the ESLint configuration
+<h2>Project Screenshots:</h2>
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+<p align="center">
+  <img src="https://github.com/dozsolti/globe-hopper/blob/main/public/screenshots/save.png?raw=true" alt="project-screenshot" width="31%" height="300px" style="object-fit:cover">
+  <img src="https://github.com/dozsolti/globe-hopper/blob/main/public/screenshots/Screenshot%202025-08-29%20111010.png?raw=true" alt="project-screenshot" width="31%" height="300px" style="object-fit:cover">
+  <img src="https://github.com/dozsolti/globe-hopper/blob/main/public/screenshots/fullsearch.png?raw=true" alt="project-screenshot" width="31%" height="300px" style="object-fit:cover">
+</p>
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+<h2>🧐 Features</h2>
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+Here're some of the project's best features:
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+- Interactive Map
+- Saved locations
+- Backend-free
+- Data is only stored on your device
+- Search for citites and states
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+<h2>💻 Built with</h2>
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+Technologies used in the project:
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+- React & Vite
+- Tailwind & Shadcn
+- Zustand
+- [React Leaflet](https://react-leaflet.js.org/)
+- [Lucide icons](https://lucide.dev/icons/x)
+- [OriginUI](https://originui.com/)
+- [Mvpblocks](https://blocks.mvp-subha.me/)
+- [MagicUI](https://magicui.design)
+- [KiboUI](https://www.kibo-ui.com/)
+- Cities and States: https://public.opendatasoft.com/explore/dataset/geonames-all-cities-with-a-population-1000/table/?disjunctive.cou_name_en&sort=-timezone&location=2,0.90932,-0.05452&basemap=jawg.light
+
+<h2>🛡️ License:</h2>
+
+This project is licensed under the MIT

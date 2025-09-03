@@ -9,7 +9,7 @@ import {
   useTransform,
 } from "motion/react";
 import type { MotionProps } from "motion/react";
-import React, { PropsWithChildren, useRef } from "react";
+import React, { type PropsWithChildren, useRef } from "react";
 
 import { cn } from "@/lib/utils";
 
@@ -29,7 +29,7 @@ const DEFAULT_DISTANCE = 140;
 const DEFAULT_DISABLEMAGNIFICATION = false;
 
 const dockVariants = cva(
-  "supports-backdrop-blur:bg-white/10 supports-backdrop-blur:dark:bg-black/10 mx-auto mt-8 flex h-[58px] w-max items-center justify-center gap-2 rounded-2xl border p-2 backdrop-blur-md",
+  "flex justify-center items-center gap-2 supports-backdrop-blur:bg-white/10 supports-backdrop-blur:dark:bg-black/10 backdrop-blur-md mx-auto mt-8 p-2 border rounded-2xl w-max h-[58px]",
 );
 
 const Dock = React.forwardRef<HTMLDivElement, DockProps>(
@@ -137,7 +137,7 @@ const DockIcon = ({
       ref={ref}
       style={{ width: scaleSize, height: scaleSize, padding }}
       className={cn(
-        "flex aspect-square cursor-pointer items-center justify-center rounded-full",
+        "flex justify-center items-center rounded-full aspect-square cursor-pointer",
         disableMagnification && "transition-colors hover:bg-muted-foreground",
         className,
       )}
@@ -150,4 +150,5 @@ const DockIcon = ({
 
 DockIcon.displayName = "DockIcon";
 
+// eslint-disable-next-line react-refresh/only-export-components
 export { Dock, DockIcon, dockVariants };
