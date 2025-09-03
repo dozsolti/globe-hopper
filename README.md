@@ -10,9 +10,9 @@
 <h2>Project Screenshots:</h2>
 
 <p align="center">
-  <img src="https://github.com/dozsolti/globe-hopper/blob/main/public/screenshots/save.png?raw=true" alt="Screenshot 1" width="31%" height="300px" style="object-fit:cover">
-  <img src="https://github.com/dozsolti/globe-hopper/blob/main/public/screenshots/history.png?raw=true" alt="Screenshot 2" width="31%" height="300px" style="object-fit:cover">
-  <img src="https://github.com/dozsolti/globe-hopper/blob/main/public/screenshots/fullsearch.png?raw=true" alt="Screenshot 3" width="31%" height="300px" style="object-fit:cover">
+  <img src="https://github.com/dozsolti/globe-hopper/blob/main/public/screenshots/save.png?raw=true" alt="Screenshot 1" width="31%" height="200px" style="object-fit:cover">
+  <img src="https://github.com/dozsolti/globe-hopper/blob/main/public/screenshots/history.png?raw=true" alt="Screenshot 2" width="31%" height="200px" style="object-fit:cover">
+  <img src="https://github.com/dozsolti/globe-hopper/blob/main/public/screenshots/fullsearch.png?raw=true" alt="Screenshot 3" width="31%" height="200px" style="object-fit:cover">
 </p>
 
 ## :sparkles: Features
