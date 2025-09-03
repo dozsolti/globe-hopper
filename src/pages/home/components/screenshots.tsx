@@ -72,7 +72,7 @@ function ScreenshotSection({
       <div className="w-full lg:w-3/4">
         <ImageZoom zoomMargin={50}>
           <img
-            src={`/screenshots/${filename}`}
+            src={`./screenshots/${filename}`}
             className="mx-auto max-h-[400px]"
             alt={title}
           />

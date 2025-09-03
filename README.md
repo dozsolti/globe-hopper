@@ -1,18 +1,19 @@
 
 <p align="center"><img src="https://github.com/dozsolti/globe-hopper/blob/main/public/screenshots/cover.png?raw=true" alt="Globe hopper cover image" height="300px"></p>
 
-<h1 align="center" id="title">Globe Hopper</h1>
+<h1 id="title">Globe Hopper</h1>
+<p>An open-source & free app to help keep track of your travels. Easily save and visualize all the cities or states you've ever visited on one beautiful, interactive map. This project is backend-free.</p>
 
-<h2>🚀 Demo</h2>
+<h2>🚀 Live</h2>
 
 [http://dozsolti.github.io/globe-hopper/](http://dozsolti.github.io/globe-hopper/)
 
-<h2>Project Screenshots:</h2>
+<h2>Project Screenshots</h2>
 
 <p align="center">
-  <img src="https://github.com/dozsolti/globe-hopper/blob/main/public/screenshots/save.png?raw=true" alt="Screenshot 1" width="31%" height="200px" style="object-fit:cover">
-  <img src="https://github.com/dozsolti/globe-hopper/blob/main/public/screenshots/history.png?raw=true" alt="Screenshot 2" width="31%" height="200px" style="object-fit:cover">
-  <img src="https://github.com/dozsolti/globe-hopper/blob/main/public/screenshots/fullsearch.png?raw=true" alt="Screenshot 3" width="31%" height="200px" style="object-fit:cover">
+  <img src="https://github.com/dozsolti/globe-hopper/blob/main/public/screenshots/save.png?raw=true" alt="Screenshot 1" width="31%" height="300px" style="object-fit:cover">
+  <img src="https://github.com/dozsolti/globe-hopper/blob/main/public/screenshots/history.png?raw=true" alt="Screenshot 2" width="31%" height="300px" style="object-fit:cover">
+  <img src="https://github.com/dozsolti/globe-hopper/blob/main/public/screenshots/fullsearch.png?raw=true" alt="Screenshot 3" width="31%" height="300px" style="object-fit:cover">
 </p>
 
 ## :sparkles: Features
