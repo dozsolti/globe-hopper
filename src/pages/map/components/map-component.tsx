@@ -2,7 +2,6 @@ import {
   MapContainer,
   TileLayer,
   CircleMarker,
-  useMapEvent,
   useMapEvents,
 } from "react-leaflet";
 import { forwardRef } from "react";
