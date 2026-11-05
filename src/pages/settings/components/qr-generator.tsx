@@ -3,7 +3,7 @@ import { useStore } from "@/hooks/useStore";
 import { useEffect, useState } from "react";
 import QRCode from "react-qr-code";
 
-import { QrReader } from "react-qr-reader";
+// import { QrReader } from "react-qr-reader";
 import { isMobile } from "@/lib/constants";
 
 export default function QRGenerator() {
@@ -40,7 +40,7 @@ export default function QRGenerator() {
       <div className="flex flex-col justify-center items-center mb-8 p-4 border rounded-lg w-11/12">
         {showQRCode && cameraPermission && (
           <>
-            <QrReader
+            {/* <QrReader
               onResult={(result, error) => {
                 if (result) {
                   setData(result?.text);
@@ -51,7 +51,7 @@ export default function QRGenerator() {
                 }
               }}
               style={{ width: "100%" }}
-            />
+            /> */}
             <p>{data}</p>
           </>
         )}
