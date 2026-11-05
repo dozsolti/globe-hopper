@@ -2,6 +2,9 @@ name: "Globe Hopper"
 description: "An web app that allows users to save the locations they have visited."
 abstract: "CRUD on locations with a map with import/export from local storage."
 
+
+todos:
+  - Swap storage to IndexedDB
 pages:
   - landing:
     - title: "Globe Hopper"

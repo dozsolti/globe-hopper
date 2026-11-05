@@ -5,6 +5,7 @@ import { download } from "@/lib/downloader";
 import type { ReactNode } from "react";
 import { useNavigate } from "react-router";
 import { format } from "date-fns";
+import QRGenerator from "./components/qr-generator";
 
 function SettingsSection({
   title,
@@ -57,14 +58,16 @@ export default function SettingsPage() {
           <h1 className="mb-4 text-3xl">Settings</h1>
 
           <SettingsSection
-            title="Export data"
-            description={<>Remove all the delete from your machine.</>}
+            title="Download data"
+            description={<>This will download your data as a JSON file.</>}
             button={
               <Button className="mt-2" variant={"outline"} onClick={exportData}>
-                Export
+                Download
               </Button>
             }
           />
+
+          <QRGenerator />
 
           <div className="mt-auto">
             <SettingsSection

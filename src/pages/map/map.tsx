@@ -1,5 +1,5 @@
 import Navbar from "@/components/navbar";
-import { createRef, useRef } from "react";
+import { createRef, useEffect, useRef } from "react";
 import type { MapRef } from "react-leaflet/MapContainer";
 import MapComponent from "./components/map-component";
 import MapSidebar from "./components/map-sidebar";
@@ -8,9 +8,18 @@ import { useMapClicked } from "@/hooks/useMapClicked";
 import type { LatLngArray } from "@/types";
 import { useStore } from "@/hooks/useStore";
 import PlaceMarker from "./components/place-marker";
+import { useParams } from "react-router";
 
 export default function MapPage() {
+  const { coords: coordsString } = useParams();
+
+  const coords = coordsString
+    ?.substring(1, coordsString.length - 1)
+    .split(",")
+    .map(Number);
+
   const mapRef = useRef<MapRef>(null);
+
   const { details, setCoords, loadDetails } = useMapClicked();
 
   const { visitedList } = useStore();
@@ -18,13 +27,14 @@ export default function MapPage() {
     Array(visitedList.length)
       .fill(0)
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      .map((_) => createRef<any>())
+      .map((_) => createRef<any>()),
   );
 
-  const goToCoords = (coords: LatLngArray) => {
+  const goToCoords = (coords: LatLngArray, zoom: number = 8) => {
     let animationTime = 2;
 
     const mapCenter = mapRef.current?.getCenter();
+    if ((mapCenter?.distanceTo(coords) || 0) < 10) return;
     if (
       mapCenter != null &&
       mapCenter.lat == coords[0] &&
@@ -32,7 +42,7 @@ export default function MapPage() {
     )
       animationTime = 0;
 
-    mapRef.current?.flyTo(coords, 8, {
+    mapRef.current?.flyTo(coords, zoom, {
       animate: true,
       duration: animationTime,
     });
@@ -51,6 +61,11 @@ export default function MapPage() {
       marker.closePopup();
     }
   };
+
+  useEffect(() => {
+    if (!coords) return;
+    goToCoords([coords[0], coords[1]], Math.min(coords[2] || 8, 17));
+  }, [coords]);
 
   return (
     <div className="min-h-screen">
